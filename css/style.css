@@ -1,0 +1,98 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(75, 75, 75);
+  height: 100vh;
+}
+header {
+  background-color: #000;
+  height: 70px;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 50vh;
+  width: 50vh;
+  margin: auto;
+}
+
+.dot {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  animation: eating-dots 0.5s linear infinite;
+}
+
+.dot::before {
+  content: '';
+  background-color: #fff;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+}
+
+@keyframes eating-dots {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.pacman {
+  position: relative;
+  background: transparent;
+  z-index: 1;
+}
+.pacman::before,
+.pacman::after {
+  content: '';
+  position: absolute;
+  top: -35px;
+  display: block;
+  border-radius: 50%;
+  height: 0px;
+  width: 0px;
+}
+.pacman::before {
+  animation: chunk-top 0.6s ease infinite;
+  border: 35px solid rgb(255, 166, 0);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+@keyframes chunk-top {
+  0%,
+  100% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(-80deg);
+  }
+}
+
+.pacman::after {
+  animation: chunk-bottom 0.6s ease infinite;
+  border: 35px solid rgb(255, 166, 0);
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+@keyframes chunk-bottom {
+  0%,
+  100% {
+    transform: rotate(-40deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
+footer {
+  background-color: #000;
+  height: 70px;
+}
